@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es5",
+    "module": "esNext",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+.py3
+.vscode
+src
+.babelrc
+.gitignore
+*.json
+webpack.config.js

@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./mysite:/app/
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET=3r4x-)&hz(p1owurd(&g+q9rzz+xkwv1#0lnvgqykyr@i#=2n
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=3151936f
+      - DEBUG=1
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=3151936f
+
+  redis:
+    image: redis
