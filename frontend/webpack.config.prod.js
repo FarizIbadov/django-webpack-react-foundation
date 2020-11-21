@@ -4,16 +4,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
-const isDev = process.env.NODE_ENV === "development";
-
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: "production",
   entry: {
     app: path.join(__dirname, "src", "index.js"),
   },
-  devtool: isDev ? "inline-source-map" : "none",
+  devtool: "none",
   resolve: {
-    extensions: [".ts", ".tsx", ".js",".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   module: {
     rules: [
@@ -40,7 +38,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpg|png|jpeg|svg)$/,
+        test: /\.(jpg|png|jpeg)$/,
         use: [
           {
             loader: "file-loader",
@@ -53,7 +51,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.ttf$/,
+        test: /\.(ttf|woff|woff2)$/,
         use: [
           {
             loader: "file-loader",
@@ -65,9 +63,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.(t|j)sx?$/,
+        test: /\.tsx?$/,
         use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx?$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
       },
     ],
   },
@@ -79,7 +86,7 @@ module.exports = {
   ],
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "mysite", "static"),
+    path: path.resolve(__dirname, "..", "backend", "static"),
   },
   optimization: {
     minimizer: [

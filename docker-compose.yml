@@ -4,7 +4,7 @@ services:
   web:
     build: .
     volumes:
-      - ./mysite:/app/
+      - ./backend:/app/
     ports:
       - "8000:8000"
     environment:
